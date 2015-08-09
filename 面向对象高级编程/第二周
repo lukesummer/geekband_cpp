@@ -1,0 +1,79 @@
+# C++ Project
+## 目标
+
+开发一款程序库，在内存中启动一个或多个Key Value Pair组成的数据库
+
+- 提供数据库基本的增、删、改操作
+- 提供数据库从内存Dump到文件系统的功能
+- 提供数据库从文件系统Load到内存的功能
+- 提供数据库的遍历和搜索功能(可选)
+
+## 接口
+### CreateDatabase
+- 在内存中创建一个新的数据库
+- 以何种数据结构创建？Vector? List? Map? hashtable? ...
+
+### InsertKeyValue
+- 在数据库中插入Key/Value
+- 插入时是否允许键值重复?
+
+### UpdataKeyValue
+- 更新数据库中的Key/Value
+- 考虑搜寻指定的Key所需要的复杂度
+
+### DeleteKeyValue
+- 删除数据库中的Key/Value
+- 考虑搜寻指定的Key所需要的复杂度
+
+### QueryKeyValue
+- 在数据库中查找Key/Value
+- 查询效率取决于内存结构
+- 如果允许重复的Key, Query的结构应该是一组Key/Value
+- 可以利用索引提供查询效率
+
+### DumpDatabase
+- 将内存数据库写入文件系统
+- 文件格式的定义?
+- 如果有多个Key/Value的内存库，如何存放？
+
+### LoadDatabase
+- 将文件系统数据库加载至内存
+
+## 内存的几种结构
+### array of <key/value pair>
+- 线性分布
+- 可添加索引提高查询和搜索效率
+
+### list <key/value pair>
+- 链表结构
+- 对于删除和查询有效率问题
+- 可添加索引提高搜索效率
+
+优势：insert和delete的效率比较快
+劣势: 搜索效率比较慢
+
+### map<key, value>
+map是一个树形结构，是一个平衡二叉树。query的效率是nlog(n)
+- hash函数的选择
+- 碰撞的解决方法
+
+优势：查询具有较高的效率
+
+可以去查看红黑树的实现方式
+
+
+# 模板和泛型
+
+## 所谓的模板分为两种:
+- function template
+- class template
+
+## 项目有无相关的参考资料
+
+## Java调用C++接口用封装dll来调用
+
+## C++当前的应用场景
+做一些对系统要求比较高，对性能要求比较高的东西
+比如驱动程序，网络编程，实时交易系统。
+
+
